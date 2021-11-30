@@ -1,0 +1,13 @@
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.exe
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.deps.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.runtimeconfig.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.runtimeconfig.dev.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\bin\Debug\netcoreapp3.1\Basic13.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.csprojAssemblyReference.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.AssemblyInfoInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.AssemblyInfo.cs
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.csproj.CoreCompileInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\Basic13\obj\Debug\netcoreapp3.1\Basic13.genruntimeconfig.cache
