@@ -11,8 +11,8 @@ namespace Puzzles
             int num = 4;
             // RandomArray();
             // CoinFlip();
-            // Console.WriteLine(TossMultipleCoins(num));
-            Names();
+            Console.WriteLine(TossMultipleCoins(num));
+            // Names();
         }
 
         public static void RandomArray()
@@ -34,14 +34,13 @@ namespace Puzzles
             Random rand = new Random();
             string[] coin = new string[] {"Heads", "Tails"};
             string result = coin[rand.Next(2)];
-            Console.WriteLine(result);
             return result;
         }
 
         public static double TossMultipleCoins(int num)
         {
             int heads = 0;
-            for (int i=0; i <= num; i++)
+            for (int i=0; i < num; i++)
             {
                 string flip = CoinFlip();
                 if (flip == "Heads")
@@ -51,9 +50,7 @@ namespace Puzzles
             }
             Console.WriteLine("This is heads: " + heads);
             Console.WriteLine("This is num: " + num);
-            double ratio = heads / num;
-            Console.WriteLine("This is ratio: " + ratio);
-            return ratio;
+            return (double)heads/num;
         }
 
         public static List<string> Names()
