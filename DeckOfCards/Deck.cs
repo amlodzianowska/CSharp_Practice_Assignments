@@ -24,9 +24,11 @@ namespace DeckOfCards
         }
         public void showDeck()
         {
+            int num = 1;
             foreach (Card card in DeckofCards)
             {
-                Console.WriteLine($"{card.stringVal} {card.suit}, {card.val}");
+                Console.WriteLine($"Card's #: {num}, {card.stringVal} {card.suit}, {card.val}");
+                num++;
             }
         }
 
@@ -49,6 +51,19 @@ namespace DeckOfCards
                         DeckofCards.Add(new Card(cards[j], suits[i], j+1));
                     }
                 }
+            }
+        }
+
+        public void shuffleDeck()
+        {
+            Random rand = new Random();
+            for (int i=0; i<DeckofCards.Count; i++)
+            {
+                int count = DeckofCards.Count + 1 - i;
+                int randomNow = rand.Next(0, count);
+                Card randCard = DeckofCards[randomNow];
+                DeckofCards.RemoveAt(randomNow);
+                DeckofCards.Add(randCard);
             }
         }
     }
