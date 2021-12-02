@@ -1,0 +1,13 @@
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.exe
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.deps.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.runtimeconfig.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.runtimeconfig.dev.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\bin\Debug\netcoreapp3.1\DemoTwo.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.csprojAssemblyReference.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.AssemblyInfoInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.AssemblyInfo.cs
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.csproj.CoreCompileInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DemoTwo\obj\Debug\netcoreapp3.1\DemoTwo.genruntimeconfig.cache
