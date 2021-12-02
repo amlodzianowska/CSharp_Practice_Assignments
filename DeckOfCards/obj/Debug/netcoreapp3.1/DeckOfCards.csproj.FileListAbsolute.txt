@@ -1,0 +1,13 @@
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.csprojAssemblyReference.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.AssemblyInfoInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.AssemblyInfo.cs
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.csproj.CoreCompileInputs.cache
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.exe
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.deps.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.runtimeconfig.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.runtimeconfig.dev.json
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\bin\Debug\netcoreapp3.1\DeckOfCards.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.dll
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.pdb
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\DeckOfCards\obj\Debug\netcoreapp3.1\DeckOfCards.genruntimeconfig.cache
