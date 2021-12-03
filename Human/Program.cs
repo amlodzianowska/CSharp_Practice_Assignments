@@ -6,9 +6,14 @@ namespace Human
     {
         static void Main(string[] args)
         {
-            Human player = new Human("Elon");
-            Human enemy = new Human("Musk");
-            player.Attack(enemy);
+            Ninja p1 = new Ninja("Elon");
+            Wizard p2 = new Wizard("Musk");
+            Samurai p3 = new Samurai("Fluffy");
+            p1.Attack(p2);
+            p3.Attack(p1);
+            p2.Attack(p3);
+            p3.Meditate();
+            p1.Steal(p2);
             
         }
     }

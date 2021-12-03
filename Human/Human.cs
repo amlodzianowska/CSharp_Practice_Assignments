@@ -2,42 +2,35 @@ using System;
 
 namespace Human
 {
-    public class Human
+    public abstract class Human
         {
         public string Name;
         public int Strength;
         public int Intelligence;
         public int Dexterity;
-        private int health;
+        protected int health;
         public int Health
             {
                 get {return health;}
+                set {health = value;}
             }
-
-        public Human(string name, int str, int intl, int dext, int hlth)
+        public Human(string name, int str, int intl, int dex, int hlth)
             {
                 Name = name;
                 Strength = str;
                 Intelligence = intl;
-                Dexterity = dext;
+                Dexterity = dex;
                 health = hlth;
             }
-        public Human(string name)
-            {
-                Name = name;
-                Strength = 3;
-                Intelligence = 3;
-                Dexterity = 3;
-                health = 100;
-            }
-        public int Attack(Human target)
+
+        public virtual int Attack(Human target)
         {
-            target.health -= Strength*5;
-            Console.WriteLine($"{Name} attacked {target.Name}!");
-            Console.WriteLine($"{target.Name}'s health is now {target.health}!");
+            int dmg = Strength * 3;
+            target.health -= dmg;
+            Console.WriteLine($"{Name} attacked {target.Name} for {dmg} damage!");
             return target.health;
         }
-
-        }
+        
+    }
 
 }
