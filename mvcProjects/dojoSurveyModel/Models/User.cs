@@ -5,16 +5,17 @@ namespace dojoSurveyModel.Models
 {
     public class User
     {
-        // [Required(ErrorMessage ="Pet has to have a name!")]
+        [Required(ErrorMessage ="Name required!")]
+        [MinLength(2, ErrorMessage ="Username has to be at least 2 characters!")]
         public string userName {get;set;}
 
-        // [Required(ErrorMessage ="Pet must have a type!")]
-        // [MinLength(2, ErrorMessage ="Pet type must contain at least 2 characters!")]
+        [Required(ErrorMessage ="Location required!")]
         public string location {get;set;}
 
-        // [Required(ErrorMessage ="Pet must have an age!")]
+        [Required(ErrorMessage ="Language required!")]
         public string language {get;set;}
 
+        [MinLength(20, ErrorMessage ="Comment has to be at least 20 characters!")]
         public string comment {get;set;}
 
     }

@@ -29,8 +29,13 @@ namespace dojoSurveyModel.Controllers
         [HttpPost("process")]
         public IActionResult Process(User user)
         {
-            newUser = user;
-            return RedirectToAction("Results");
+            if (ModelState.IsValid)
+            {
+                newUser = user;
+                return RedirectToAction("Results");
+            } else {
+                return View("Index");
+            }
         }
 
         [HttpGet("results")]
