@@ -37,7 +37,12 @@ namespace SportsORM.Controllers
             ViewBag.AtlanticLeagues = _context.Leagues
                 .Where(l => l.Name.Contains("Atlantic"))
                 .ToList();
-
+            IEnumerable<League> AllLeagues = _context.Leagues;
+            IEnumerable<League> FootballLeagues = _context.Leagues
+                .Where(l => l.Sport.Contains("Football"))
+                .ToList();
+            ViewBag.ExceptFootball = AllLeagues.Except(FootballLeagues).OrderBy(l => l.Sport);
+            
             ViewBag.DallasTeams = _context.Teams
                 .Where(t => t.Location.Contains("Dallas"))
                 .ToList();
@@ -57,12 +62,22 @@ namespace SportsORM.Controllers
                 .OrderByDescending(t => t.TeamName)
                 .ToList();
 
-            ViewBag.CooperPlayers = _context.Players
+            IEnumerable<Player> CooperPlayers = _context.Players
                 .Where(p => p.LastName.Contains("Cooper"))
                 .ToList();
-            ViewBag.JoshuaPlayers = _context.Players
+            IEnumerable<Player> JoshuaPlayers = _context.Players
                 .Where(p => p.FirstName.Contains("Joshua"))
                 .ToList();
+            ViewBag.Joshuas = JoshuaPlayers;
+            ViewBag.Coopers = CooperPlayers;
+            ViewBag.CoopersExceptJoshuas = CooperPlayers.Except(JoshuaPlayers);
+            IEnumerable<Player> Alexes = _context.Players
+                .Where(p => p.FirstName.Contains("Alexander"))
+                .ToList();
+            IEnumerable<Player> Wyatts = _context.Players
+                .Where(p => p.FirstName.Contains("Wyatt"))
+                .ToList();
+            ViewBag.AlexOrWyatt = Alexes.Concat(Wyatts);
             
 
             return View();
