@@ -1,7 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model Animal;
 
 <div class="text-center">
-    
+    <form action="addAnimal" method="post">
+        <div class="form-group">
+            <label for="Species">Species</label>
+            <input asp-for="Species" class="form-control">
+            <span asp-validation-for="Species" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="numLegs">Number of Legs</label>
+            <input asp-for="numLegs" class="form-control">
+            <span asp-validation-for="numLegs" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="isMammal">Is this a mammal?</label>
+            <input asp-for="isMammal">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-danger">
+    </form>
+    <h2>All the animals</h2>
+    <ul>
+        @{
+            foreach (Animal animal in @ViewBag.allAnimals)
+            {
+                <li><a href="/animal/@animal.AnimalId">@animal.Species</a></li>
+            }
+        }
+    </ul>
 </div>
