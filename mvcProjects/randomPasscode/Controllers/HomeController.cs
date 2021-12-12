@@ -56,7 +56,8 @@ namespace randomPasscode.Controllers
         public IActionResult Generate()
         {
             int? total = HttpContext.Session.GetInt32("total");
-            HttpContext.Session.SetInt32("Total", (int)++total);
+            Console.WriteLine("Total is", total);
+            HttpContext.Session.SetInt32("total", (int)++total);
             HttpContext.Session.GetString("passcode");
             HttpContext.Session.SetString("passcode", generatePassword(14));
             Console.WriteLine(Passcode);
