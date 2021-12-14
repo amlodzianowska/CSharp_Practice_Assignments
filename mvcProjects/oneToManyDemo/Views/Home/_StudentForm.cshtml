@@ -1,0 +1,23 @@
+@model Student
+
+<h2>Add a Teacher</h2>
+<form action="addStudent" method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="TeacherId">Teacher</label>
+        <select class="form-control" asp-for="TeacherId">
+            @{
+                foreach (Teacher t in ViewBag.AllTeachers)
+                {
+                    <option value="@t.TeacherId">@t.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="submit" value="Add Student" class="btn btn-primary">
+
+</form>

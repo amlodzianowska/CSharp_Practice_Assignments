@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Roster</h1>
+    <div class="row">
+        <div class="col-6">
+            <partial name="_TeacherForm"/>
+            <partial name="_StudentForm"/>
+        </div>
+        <div class="col-6">
+            <h2>All Teachers</h2>
+            @{
+                if (@ViewBag.AllTeachers.Count == 0)
+                {
+                    <p>No Teachers yet!</p>
+                }else{
+                    foreach (Teacher t in ViewBag.AllTeachers)
+                    {
+                        <p>Instructor @t.Name, @t.Course</p>
+                        <ul>
+                        @foreach (Student s in t.MyStudents)
+                        {
+                            <li>@s.Name</li>
+                        }
+                        </ul>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

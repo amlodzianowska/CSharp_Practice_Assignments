@@ -1,0 +1,17 @@
+@model Teacher
+
+<h2>Add a Teacher</h2>
+<form action="addTeacher" method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Course">Course</label>
+        <input asp-for="Course" class="form-control">
+        <span asp-validation-for="Course" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Add Teacher" class="btn btn-primary">
+
+</form>
