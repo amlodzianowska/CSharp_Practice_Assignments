@@ -1,0 +1,45 @@
+@model Dish
+
+<h2>Add a Dish</h2>
+<form method="post" asp-action="addDish" asp-controller="Home">
+        <div class="form-group">
+            <label for="Name">Dish Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Tastiness">Tastiness</label>
+            <select asp-for="Tastiness">
+                @{
+                    for (int i = 1; i<=5;i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="Tastiness" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="ChefId">Chef</label>
+            <select class="form-control" asp-for="ChefId">
+                @{
+                    foreach (Chef ch in ViewBag.AllChefs)
+                    {
+                        <option value="@ch.ChefId">@ch.FName @ch.LName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Calories">Calories</label>
+            <input asp-for="Calories" class="form-control">
+            <span asp-validation-for="Calories" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description: </label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-danger">
+    </form>
+

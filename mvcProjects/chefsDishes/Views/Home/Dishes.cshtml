@@ -1,0 +1,27 @@
+@model Dish
+<div class="text-center">
+    <h2>Take a look at our tasty dishes!</h2>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Tastiness</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Dish d in ViewBag.dishWithChef)
+                {
+                    <tr>
+                        <td>@d.Name</td>
+                        <td>@d.MyChef.FName @d.MyChef.LName</td>
+                        <td>@d.Tastiness</td>
+                        <td>@d.Calories</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
