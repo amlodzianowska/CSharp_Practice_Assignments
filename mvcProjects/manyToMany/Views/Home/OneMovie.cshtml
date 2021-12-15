@@ -1,0 +1,30 @@
+@model Movie
+
+<h1>@Model.Title</h1>
+<h3>Release Year: @Model.ReleaseYear</h3>
+<h3>Genre: @Model.Genre</h3>
+<h3>Cast List</h3>
+<ul>
+    @{
+        foreach(Cast c in Model.CastList)
+        {
+            <li>@c.Actor.FName @c.Actor.LName</li>
+        }
+    }
+</ul>
+
+<form action="/addToCast" method="post">
+    <div class="form-group">
+        <label for="ActorId">Add Actor to Cast</label>
+        <select name="ActorId" class="form-control col-4">
+            @{
+                foreach (Actor a in @ViewBag.AllActors)
+                {
+                    <option value="@a.ActorId">@a.FName @a.LName</option>
+                }
+            }
+        </select>
+    </div>
+    <input type="hidden" name="MovieId" value="@Model.MovieId">
+    <input type="submit" value="Add Actor">
+</form>

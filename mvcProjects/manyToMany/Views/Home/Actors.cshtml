@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Actor Page";
+}
+@model Actor
+<div class="text-center row">
+    <div class="col-8">
+        <h2>Add a Actor</h2>
+        <form action="addActor" method="post">
+            <div class="form-group">
+                <label for="FName">First Name</label>
+                <input asp-for="FName" class="form-control">
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="LName">LName</label>
+                <input asp-for="LName" class="form-control">
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+
+            <input type="submit" value="Add Actor" class="btn btn-info">
+        </form>
+    </div>
+    <div class="col-4">
+        <h2>List of Actors</h2>
+        @{
+            foreach (Actor a in ViewBag.AllActors)
+            {
+                <h4>@a.FName @a.LName</h4>
+            }
+        }
+    </div>
+</div>
