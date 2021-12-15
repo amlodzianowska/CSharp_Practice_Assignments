@@ -94,6 +94,34 @@ namespace manyToMany.Controllers
             return Redirect($"/actor/{newRole.ActorId}");
         }
 
+        [HttpGet("movie/delete/{movieId}")]
+        public IActionResult deleteMovie(int movieId)
+        {
+            Movie mtd = _context.Movies.SingleOrDefault(s => s.MovieId == movieId);
+            _context.Movies.Remove(mtd);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("actor/delete/{actorId}")]
+        public IActionResult deleteActor(int actorId)
+        {
+            Actor atd = _context.Actors.SingleOrDefault(s => s.ActorId == actorId);
+            _context.Actors.Remove(atd);
+            _context.SaveChanges();
+            return RedirectToAction("Actors");
+        }
+
+        [HttpGet("delete/cast/{actorId}/{movieId}")]
+        public IActionResult deleteFromCast(int actorId, int movieId)
+        {
+            Cast role = _context.Cast.SingleOrDefault(d => d.ActorId == actorId && d.MovieId == movieId);
+            _context.Cast.Remove(role);
+            _context.SaveChanges();
+            return Redirect($"/actor/{role.ActorId}");
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
