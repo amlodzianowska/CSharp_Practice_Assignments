@@ -14417,6 +14417,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\anmlo\\Desktop\\Dojo_Assignments\\csharp\\mvcProjects\\manyToMany\\Views\\Home\\OneActor.cshtml",
+      "TargetPath": "Views\\Home\\OneActor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\anmlo\\Desktop\\Dojo_Assignments\\csharp\\mvcProjects\\manyToMany\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

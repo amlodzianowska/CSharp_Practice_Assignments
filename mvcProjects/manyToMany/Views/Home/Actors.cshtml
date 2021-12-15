@@ -25,7 +25,7 @@
         @{
             foreach (Actor a in ViewBag.AllActors)
             {
-                <h4>@a.FName @a.LName</h4>
+                <h4><a href="/actor/@a.ActorId">@a.FName @a.LName</a></h4>
             }
         }
     </div>

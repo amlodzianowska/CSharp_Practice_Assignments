@@ -42,6 +42,14 @@ namespace manyToMany.Controllers
             return View(one);
         }
 
+        [HttpGet("actor/{actorId}")]
+        public IActionResult OneActor(int actorId)
+        {
+            ViewBag.AllMovies = _context.Movies.OrderBy(m => m.Title).ToList();
+            Actor one = _context.Actors.Include(f => f.ActedIn).ThenInclude(g => g.Movie).FirstOrDefault(d => d.ActorId == actorId);
+            return View(one);
+        }
+
         [HttpPost("addMovie")]
         public IActionResult addMovie(Movie newMovie)
         {
@@ -76,6 +84,14 @@ namespace manyToMany.Controllers
             _context.Add(newRole);
             _context.SaveChanges();
             return Redirect($"/movie/{newRole.MovieId}");
+        }
+
+        [HttpPost("addRole")]
+        public IActionResult addToRoles(Cast newRole)
+        {
+            _context.Add(newRole);
+            _context.SaveChanges();
+            return Redirect($"/actor/{newRole.ActorId}");
         }
 
 

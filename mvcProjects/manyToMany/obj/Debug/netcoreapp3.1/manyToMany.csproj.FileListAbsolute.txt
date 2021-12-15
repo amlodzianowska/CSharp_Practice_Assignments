@@ -59,3 +59,4 @@ C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\mvcProjects\manyToMany\obj\Debug\
 C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\mvcProjects\manyToMany\obj\Debug\netcoreapp3.1\manyToMany.genruntimeconfig.cache
 C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\mvcProjects\manyToMany\obj\Debug\netcoreapp3.1\Razor\Views\Home\Actors.cshtml.g.cs
 C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\mvcProjects\manyToMany\obj\Debug\netcoreapp3.1\Razor\Views\Home\OneMovie.cshtml.g.cs
+C:\Users\anmlo\Desktop\Dojo_Assignments\csharp\mvcProjects\manyToMany\obj\Debug\netcoreapp3.1\Razor\Views\Home\OneActor.cshtml.g.cs
