@@ -1,2 +1,14 @@
+@model Post
 <partial name="_Navbar.cshtml"/>
 <h1>One Pet</h1>
+<img src="@Model.URL" alt="post" style="width: 22rem;">
+<h3>Posted by: @Model.Poster.FName @Model.Poster.LName</h3>
+<h4>@Model.Description</h4>
+@{
+    if(Model.UserId == ViewBag.LoggedInUser.UserId){
+        <a href="/delete/@Model.PostId" class="btn btn-danger">Delete</a>
+        <a href="/edit/@Model.PostId" class="btn btn-info">Edit</a>
+    }else{
+        <a href="#" class="btn btn-primary">Like</a>
+    }
+}

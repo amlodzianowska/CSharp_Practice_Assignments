@@ -1,7 +1,7 @@
 <partial name="_Navbar.cshtml"/>
 @model Post
 <h1>Edit Post</h1>
- <form action="/update" method="post">
+ <form action="/update/@Model.PostId" method="post">
             <div class="form-group">
                 <label for="URL">Picture URL</label>
                 <input asp-for="URL" class="form-control">

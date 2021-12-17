@@ -35,6 +35,8 @@ namespace beltReview.Controllers
             {
                 return RedirectToAction("Index");
             }
+            ViewBag.LoggedInUser = _context.Users.FirstOrDefault(d => d.UserId == (int)HttpContext.Session.GetInt32("loggedInUser"));
+            ViewBag.AllPosts = _context.Posts.Include(d => d.Poster).OrderBy(s => s.UpdatedAt).ToList();
             return View();
         }
 
@@ -101,6 +103,24 @@ namespace beltReview.Controllers
             return View();
         }
 
+        [HttpPost("createPost")]
+        public IActionResult CreatePost(Post newPost)
+        {
+            if(HttpContext.Session.GetInt32("loggedInUser") == null)
+            {
+                return RedirectToAction("Index");
+            }
+            if(ModelState.IsValid)
+            {
+                newPost.UserId = (int)HttpContext.Session.GetInt32("loggedInUser");
+                _context.Add(newPost);
+                _context.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }else {
+                return View("AddPost");
+            }
+        }
+
         [HttpGet("post/{postId}")]
         public IActionResult OnePost(int postId)
         {
@@ -108,7 +128,9 @@ namespace beltReview.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            ViewBag.LoggedInUser = _context.Users.FirstOrDefault(d => d.UserId == (int)HttpContext.Session.GetInt32("loggedInUser"));
+            Post onePost = _context.Posts.Include(f => f.Poster).FirstOrDefault(p => p.PostId == postId);
+            return View(onePost);
         }
 
         [HttpGet("edit/{postId}")]
@@ -118,17 +140,39 @@ namespace beltReview.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            Post postToEdit = _context.Posts.FirstOrDefault(p => p.PostId == postId);
+            return View(postToEdit);
         }
 
-
-        [HttpPost("update")]
-        public IActionResult Update()
+        [HttpPost("update/{postId}")]
+        public IActionResult Update(Post newVersion, int postId)
         {
             if(HttpContext.Session.GetInt32("loggedInUser") == null)
             {
                 return RedirectToAction("Index");
             }
+            Post postToUpdate = _context.Posts.FirstOrDefault(p => p.PostId == postId);
+            if(HttpContext.Session.GetInt32("loggedInUser") != postToUpdate.UserId)
+            {
+                return RedirectToAction("Logout");
+            }
+            postToUpdate.URL = newVersion.URL;
+            postToUpdate.Description = newVersion.Description;
+            postToUpdate.UpdatedAt = DateTime.Now;
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpGet("delete/{postId}")]
+        public IActionResult Delete(int postId)
+        {
+            Post postToDelete = _context.Posts.FirstOrDefault(p => p.PostId == postId);
+            if(HttpContext.Session.GetInt32("loggedInUser") != postToDelete.UserId)
+            {
+                return RedirectToAction("Logout");
+            }
+            _context.Posts.Remove(postToDelete);
+            _context.SaveChanges();
             return RedirectToAction("Dashboard");
         }
 

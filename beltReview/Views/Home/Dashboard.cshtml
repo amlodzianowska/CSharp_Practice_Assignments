@@ -1,2 +1,26 @@
-<partial name="_Navbar.cshtml"/>
-<h1>Welcome</h1>
+<partial name="_Navbar.cshtml" />
+<h1>Welcome, @ViewBag.LoggedInUser.FName</h1>
+
+<div class="d-flex">
+    @{
+        foreach (Post p in ViewBag.AllPosts)
+        {
+            <div class="card m-2" style="width: 18rem;">
+                <a href="/post/@p.PostId"><img src="@p.URL" class="card-img-top" alt="Pet"></a>
+                
+                <div class="card-body">
+                    <h5 class="card-title">Posted by: @p.Poster.FName @p.Poster.LName</h5>
+                    <p class="card-text">@p.Description</p>
+                    @{
+                        if(p.UserId == ViewBag.LoggedInUser.UserId){
+                            <a href="/delete/@p.PostId" class="btn btn-danger">Delete</a>
+                            <a href="/edit/@p.PostId" class="btn btn-info">Edit</a>
+                        }else{
+                            <a href="#" class="btn btn-primary">Like</a>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
