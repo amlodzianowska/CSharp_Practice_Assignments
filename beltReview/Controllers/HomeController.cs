@@ -36,7 +36,7 @@ namespace beltReview.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.LoggedInUser = _context.Users.FirstOrDefault(d => d.UserId == (int)HttpContext.Session.GetInt32("loggedInUser"));
-            ViewBag.AllPosts = _context.Posts.Include(d => d.Poster).OrderBy(s => s.UpdatedAt).ToList();
+            ViewBag.AllPosts = _context.Posts.Include(d => d.Poster).Include(f => f.LikedBy).OrderBy(s => s.UpdatedAt).ToList();
             return View();
         }
 
@@ -129,7 +129,7 @@ namespace beltReview.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.LoggedInUser = _context.Users.FirstOrDefault(d => d.UserId == (int)HttpContext.Session.GetInt32("loggedInUser"));
-            Post onePost = _context.Posts.Include(f => f.Poster).FirstOrDefault(p => p.PostId == postId);
+            Post onePost = _context.Posts.Include(f => f.Poster).Include(f => f.LikedBy).FirstOrDefault(p => p.PostId == postId);
             return View(onePost);
         }
 
@@ -172,6 +172,42 @@ namespace beltReview.Controllers
                 return RedirectToAction("Logout");
             }
             _context.Posts.Remove(postToDelete);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpGet("like/{postId}/{userId}")]
+        public IActionResult LikePost(int postId, int userId)
+        {
+            if(HttpContext.Session.GetInt32("loggedInUser") == null)
+            {
+                return RedirectToAction("Index");
+            }
+            if(HttpContext.Session.GetInt32("loggedInUser") != userId)
+            {
+                return RedirectToAction("Logout");
+            }
+            Like newLike = new Like();
+            newLike.PostId = postId;
+            newLike.UserId = userId;
+            _context.Add(newLike);
+            _context.SaveChanges();
+            return RedirectToAction("Dashboard");
+        }
+
+        [HttpGet("unlike/{postId}/{userId}")]
+        public IActionResult UnlikePost(int postId, int userId)
+        {
+            if(HttpContext.Session.GetInt32("loggedInUser") == null)
+            {
+                return RedirectToAction("Index");
+            }
+            if(HttpContext.Session.GetInt32("loggedInUser") != userId)
+            {
+                return RedirectToAction("Logout");
+            }
+            Like likeToRemove = _context.Likes.FirstOrDefault(d => d.PostId == postId && d.UserId == userId);
+            _context.Likes.Remove(likeToRemove);
             _context.SaveChanges();
             return RedirectToAction("Dashboard");
         }

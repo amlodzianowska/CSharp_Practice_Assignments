@@ -10,13 +10,19 @@
                 
                 <div class="card-body">
                     <h5 class="card-title">Posted by: @p.Poster.FName @p.Poster.LName</h5>
+                    <h6>@p.LikedBy.Count Likes</h6>
                     <p class="card-text">@p.Description</p>
                     @{
                         if(p.UserId == ViewBag.LoggedInUser.UserId){
                             <a href="/delete/@p.PostId" class="btn btn-danger">Delete</a>
                             <a href="/edit/@p.PostId" class="btn btn-info">Edit</a>
                         }else{
-                            <a href="#" class="btn btn-primary">Like</a>
+                            if(p.LikedBy.Any(f => f.UserId == ViewBag.LoggedInUser.UserId))
+                            {
+                                <a href="/unlike/@p.PostId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">Unlike</a>
+                            }else {
+                                <a href="/like/@p.PostId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">Like</a>
+                            }
                         }
                     }
                 </div>

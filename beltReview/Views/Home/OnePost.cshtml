@@ -3,12 +3,18 @@
 <h1>One Pet</h1>
 <img src="@Model.URL" alt="post" style="width: 22rem;">
 <h3>Posted by: @Model.Poster.FName @Model.Poster.LName</h3>
+<h5>@Model.LikedBy.Count Likes</h5>
 <h4>@Model.Description</h4>
 @{
     if(Model.UserId == ViewBag.LoggedInUser.UserId){
         <a href="/delete/@Model.PostId" class="btn btn-danger">Delete</a>
         <a href="/edit/@Model.PostId" class="btn btn-info">Edit</a>
     }else{
-        <a href="#" class="btn btn-primary">Like</a>
+        if(Model.LikedBy.Any(f => f.UserId == ViewBag.LoggedInUser.UserId))
+        {
+            <a href="/unlike/@Model.PostId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">Unlike</a>
+        }else {
+            <a href="/like/@Model.PostId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">Like</a>
+        }
     }
 }
