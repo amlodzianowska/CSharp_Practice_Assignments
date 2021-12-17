@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SportsORM.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace SportsORM.Controllers
@@ -37,11 +39,21 @@ namespace SportsORM.Controllers
             ViewBag.AtlanticLeagues = _context.Leagues
                 .Where(l => l.Name.Contains("Atlantic"))
                 .ToList();
-            IEnumerable<League> AllLeagues = _context.Leagues;
-            IEnumerable<League> FootballLeagues = _context.Leagues
-                .Where(l => l.Sport.Contains("Football"))
+
+            ViewBag.ExceptFootball = _context.Leagues
+                .Where(l => l.Sport!="Football")
                 .ToList();
-            ViewBag.ExceptFootball = AllLeagues.Except(FootballLeagues).OrderBy(l => l.Sport);
+            // 2 ALTERNATIVE WAYS:
+            // 1.
+            // ViewBag.ExceptFootball = _context.Leagues
+            //     .Where(l => !l.Sport.Contains("Football"))
+            //     .ToList();
+            // 2.
+            // IEnumerable<League> AllLeagues = _context.Leagues;
+            // IEnumerable<League> FootballLeagues = _context.Leagues
+            //     .Where(l => l.Sport.Contains("Football"))
+            //     .ToList();
+            // ViewBag.ExceptFootball = AllLeagues.Except(FootballLeagues).OrderBy(l => l.Sport);
             
             ViewBag.DallasTeams = _context.Teams
                 .Where(t => t.Location.Contains("Dallas"))
@@ -92,6 +104,30 @@ namespace SportsORM.Controllers
         [HttpGet("level_2")]
         public IActionResult Level2()
         {
+            IEnumerable<Team> ASCTeams = _context.Teams.Include(t => t.CurrLeague).Where(l => l.CurrLeague.Name == "Atlantic Soccer Conference").ToList();
+            ViewBag.ASCTeams = ASCTeams;
+
+            IEnumerable<Player> BostonPenguinsPlayers = _context.Players.Include(p => p.CurrentTeam).Where(t => t.CurrentTeam.TeamName == "Penguins");
+            ViewBag.BPPlayers = BostonPenguinsPlayers;
+
+            IEnumerable<Player> CollegiateBaseballConference = _context.Players.Include(p => p.CurrentTeam).ThenInclude(l => l.CurrLeague).Where(t => t.CurrentTeam.CurrLeague.Name == "International Collegiate Baseball Conference").OrderBy(n => n.LastName);
+            ViewBag.ICBCPlayers = CollegiateBaseballConference;
+
+            IEnumerable<Player> Lopez = _context.Players.Include(p => p.CurrentTeam).ThenInclude(l => l.CurrLeague).Where(t => t.LastName == "Lopez").Where(t => t.CurrentTeam.CurrLeague.Name == "American Conference of Amateur Football");
+            ViewBag.Lopez = Lopez;
+
+            IEnumerable<Player> FootballPlayers = _context.Players.Include(p => p.CurrentTeam).ThenInclude(l => l.CurrLeague).Where(t => t.CurrentTeam.CurrLeague.Sport == "Football").OrderBy(n => n.LastName);
+            ViewBag.FBPlayers = FootballPlayers;
+
+            IEnumerable<Team> TeamsWithSophia = _context.Teams.Include(t => t.AllPlayers).Where(p => p.CurrentPlayers.Any(p => p.FirstName == "Sophia")).ToList();
+            ViewBag.TWSophia = TeamsWithSophia;
+
+            IEnumerable<League> LeaguesWithSophia = _context.Leagues.Include(t => t.Teams).ThenInclude(l => l.CurrentPlayers).Where(p => p.Teams.Any(t => t.CurrentPlayers.Any(p => p.FirstName == "Sophia"))).ToList();
+            ViewBag.LWSophia = LeaguesWithSophia;
+
+            IEnumerable<Player> Flores = _context.Players.Include(p => p.CurrentTeam).Where(t => t.LastName == "Flores").Where(t => t.CurrentTeam.TeamName != "Roughriders");
+            ViewBag.Flores = Flores;
+
             return View();
         }
 
