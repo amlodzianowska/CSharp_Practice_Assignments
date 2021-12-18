@@ -1,0 +1,28 @@
+@model Category
+<div class="text-center row">
+    <div class="col-8">
+        <h2>Add a Category</h2>
+        <form action="addCategory" method="post">
+            <div class="form-group">
+                <label for="CategoryName">Category Name</label>
+                <input asp-for="CategoryName" class="form-control">
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Add Category" class="btn btn-info">
+        </form>
+    </div>
+    <div class="col-4">
+        <h2>List of Categories</h2>
+        @{
+            if(ViewBag.AllCategories.Count == 0)
+            {
+                <h4>No categories yet!</h4>
+            }else{
+                foreach (Category m in ViewBag.AllCategories)
+                {
+                    <h4><a href="/category/@m.CategoryId">@m.CategoryName</a></h4>
+                }
+            }
+        }
+    </div>
+</div>
