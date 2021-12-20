@@ -1,0 +1,38 @@
+<h1>Welcome to the Wedding Planner, @ViewBag.LoggedInUser.FName</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Wedding</th>
+            <th scope="col">Date</th>
+            <th scope="col">Guest</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(Wedding w in ViewBag.AllWeddings)
+            {
+            <tr>
+                <td><a href="/wedding/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                <td>@w.WeddingDate.ToString("MMMM dd, yyyy")</td>
+                <td>@w.WeddingGuests.Count</td>
+                @{
+                    if(@w.Host.UserId == @ViewBag.LoggedInUser.UserId)
+                    {
+                        <td><a href="/delete/@w.WeddingId">Delete</a></td>
+                    }else{
+                        if(w.WeddingGuests.Any(f => f.UserId == ViewBag.LoggedInUser.UserId))
+                            {
+                                <td><a href="/unrsvp/@w.WeddingId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">UnRSVP</a></td>
+                            }else {
+                                <td><a href="/rsvp/@w.WeddingId/@ViewBag.LoggedInUser.UserId" class="btn btn-primary">RSVP</a></td>
+                            }
+                    }
+                }
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+<a href="/newWedding" class="btn btn-primary">New Wedding</a>
